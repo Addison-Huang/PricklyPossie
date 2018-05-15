@@ -18,3 +18,17 @@ peekMin returns the smallest value of the arraylist by using a foreach loop to i
 
 ### removeMin
 removeMin finds the smallest value and records its value and its index. Then, the remove function of arraylist is called to remove that value from the arraylist. The value at the removed index is returned. 
+
+## Heap todo
+1. write the default constructor
+2. write isEmpty
+3. write peekMin
+4. write minOf
+5. write swap
+6. write minChildPos
+7. write removeMin
+8. write add
+9. write toString
+10. test and compile
+11. Succeed 
+12. learnanation
