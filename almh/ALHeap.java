@@ -44,7 +44,7 @@ public class ALHeap
    *****************************************************/
   public boolean isEmpty()
   {
-      return (_heap.size() <= 0); 
+      return _heap.isEmpty();
   }//O(1)
 
 
@@ -55,7 +55,10 @@ public class ALHeap
    *****************************************************/
   public Integer peekMin()
   {
-      return _heap.get(0);
+	if ( _heap.size() < 1 )
+	    return null;
+	else
+	    return _heap.get(0); 
   }//O(1)
 
 
@@ -101,8 +104,22 @@ public class ALHeap
    *****************************************************/
   private int minChildPos( int pos )
   {
-      return 0; //Placeholder value
-  }//O(?)
+	int ret;
+	int left = 2*pos + 1; //index of left child
+	int right = 2*pos + 2; //index of right child
+	//leaf or not in the heap
+	if (pos >= _heap.size() || left >= _heap.size() ||  pos < 0 )
+	    ret = -1;
+	//only a right child
+	else if ( right >= _heap.size() )
+	    retVal = left;
+	//2 children
+	else if ( _heap.get(left).compareTo(_heap.get(right)) < 0 )
+	    retVal = left;
+	else
+	    retVal = right;
+	return retVal;
+  }//O(n)
   
 
   //************ aux helper fxns ***************
