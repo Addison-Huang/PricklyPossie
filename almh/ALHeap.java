@@ -1,8 +1,11 @@
 /*****************************************************
  * class ALHeap
- * SKELETON
  * Implements a min heap using an ArrayList as underlying container
  *****************************************************/
+
+/* Team PricklyPossie -- Addison Huang, Shayan Chowdhury, Thet Zaw
+lab 03
+*/
 
 import java.util.ArrayList;
 
@@ -92,8 +95,34 @@ public class ALHeap
    *****************************************************/
   public Integer removeMin()
   {
-      return _heap.get(0); //Placeholder value
-  }//O(?)
+	  if ( _heap.size() == 0 ) 
+	    return null;
+	//store root 
+	Integer ret = peekMin();
+	//store val about to be swapped into temp
+	Integer temp = _heap.get( _heap.size() - 1);
+	//swap root and leaf
+	swap( 0, _heap.size() - 1 );
+	//cut off leaf
+	_heap.remove( _heap.size() - 1);
+	int pos = 0;
+	int minChild;
+	while( pos < _heap.size() ) {
+	    minChild= minChildPos(pos);
+            //no children
+	    if ( minChild == -1 ) 
+		break;
+	    //< child
+	    else if ( temp.compareTo( _heap.get(minChild) ) <= 0 ) 
+		break;
+	    // > child
+	    else {
+		swap(pos, minChild);
+		pos = minChild;
+	    }
+	}
+	return ret;
+  }//O(n)
 
 
   /*****************************************************
