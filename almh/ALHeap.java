@@ -141,13 +141,13 @@ public class ALHeap
 	    ret = -1;
 	//only a right child
 	else if ( right >= _heap.size() )
-	    retVal = left;
+	    ret = left;
 	//2 children
 	else if ( _heap.get(left).compareTo(_heap.get(right)) < 0 )
-	    retVal = left;
+	    ret = left;
 	else
-	    retVal = right;
-	return retVal;
+	    ret= right;
+	return ret;
   }//O(n)
   
 
