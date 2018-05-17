@@ -85,7 +85,7 @@ public class ALHeap
 	  currentIndex = parentIndex;
 	  parentIndex = ( currentIndex - 1) / 2;
       } 
-  }//O(?)
+  }//O(n)
 
 
   /*****************************************************
@@ -95,8 +95,8 @@ public class ALHeap
    *****************************************************/
   public Integer removeMin()
   {
-	  if ( _heap.size() == 0 ) 
-	    return null;
+      if ( isEmpty()) 
+	  throw new NullPointerException();
 	//store root 
 	Integer ret = peekMin();
 	//store val about to be swapped into temp
@@ -196,8 +196,6 @@ public class ALHeap
       pile.add(9);
       System.out.println(pile);
 
-       /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
       System.out.println("removing " + pile.removeMin() + "...");
       System.out.println(pile);
       System.out.println("removing " + pile.removeMin() + "...");
@@ -220,7 +218,6 @@ public class ALHeap
       System.out.println(pile);
       System.out.println("removing " + pile.removeMin() + "...");
       System.out.println(pile);
-      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
   }//end main()
 
 }//end class ALHeap
