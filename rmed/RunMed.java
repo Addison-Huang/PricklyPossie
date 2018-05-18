@@ -15,7 +15,6 @@ public class RunMed {
     //instance variables
     private ALHeapMin _bigVals;
     private ALHeapMax _lilVals;
-    //The HW page is wrong, trust me on this
 
 
     //constructors
@@ -26,7 +25,15 @@ public class RunMed {
 
     //Refer to above block comment for how the median is received
     public double getMedian() {
-	return 0.0;
+	//if the two heaps are the same size
+	if (_bigVals.size() == _lilVals.size())
+		return ((double) _bigVals.peekMin() + _lilVals.peekMax()) / 2;
+	//if the minheap size is > maxheap size
+	    else if (_bigVals.size() > _lilVals.size())
+		return _bigVals.peekMin();
+	//if the maxheap size is > minheap size
+	else
+		return _lilVals.peekMax();
     }
 
     /** 
@@ -39,7 +46,20 @@ public class RunMed {
      * This keeps the heaps balanced and allows the getMedian() algorithm to work at any stage
      **/ 
     public void add(Integer newVal) {
-
+	//if int is in the lower half of numbers
+	if (newVal <= _bigVals.peekMin()) {
+		_bigVals.add(newVal);
+	//if int is in the bigger half of numbers
+	else {
+		_lilVals.add(newVal);
+	}
+	//if the size differs by more than one
+	if (_bigVals.size() - _lilVals.size == 2) {
+		_lilVals.add(_bigVals.removeMin());
+	}
+	else if (_lilVals.size - bigVals.size() == 2) {
+		_bigVals.add(_lilVals.removeMax());
+	}
     } 
 
 
