@@ -47,20 +47,19 @@ public class RunMed {
      **/ 
     public void add(Integer newVal) {
 	//if int is in the lower half of numbers
-	if (newVal <= _bigVals.peekMin()) {
+	if (newVal <= _bigVals.peekMin())
 		_bigVals.add(newVal);
 	//if int is in the bigger half of numbers
-	else {
+	else
 		_lilVals.add(newVal);
-	}
-	//if the size differs by more than one
-	if (_bigVals.size() - _lilVals.size == 2) {
-		_lilVals.add(_bigVals.removeMin());
-	}
-	else if (_lilVals.size - bigVals.size() == 2) {
-		_bigVals.add(_lilVals.removeMax());
-	}
-    } 
 
+	//if the size differs by more than one
+	if (_bigVals.size() - _lilVals.size() == 2)
+		_lilVals.add(_bigVals.removeMin());
+
+	else if (_lilVals.size() - _bigVals.size() == 2)
+		_bigVals.add(_lilVals.removeMax());
+
+	}
 
 } 
